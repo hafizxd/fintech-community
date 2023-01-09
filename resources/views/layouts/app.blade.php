@@ -7,6 +7,14 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
@@ -15,8 +23,8 @@
 
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="font-poppins antialiased">
+        <div class="min-h-screen bg-gray-100 dark:bg-slate-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -35,5 +43,6 @@
         </div>
 
         @livewireScripts
+        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
     </body>
 </html>
