@@ -15,11 +15,11 @@
                 </div>
 
                 <div class="flex justify-end gap-3">
-                    <x-danger-button type="button" wire:click="$emit('close-card')" class="text-2xl p-0 bg-transparent border-2 border-red-600 text-red-600 hover:dark:bg-red-600 hover:dark:text-white">
+                    <x-danger-button type="button" wire:click="$emit('close-card')" class="text-xl p-0 bg-transparent border-2 border-red-600 text-red-600 hover:dark:bg-red-600 hover:dark:text-white">
                         <i class="uil uil-times"></i>
                     </x-danger-button>
     
-                    <x-primary-button class="text-2xl p-0">
+                    <x-primary-button class="text-xl p-0">
                         <i class="uil uil-message"></i>
                     </x-primary-button>
                 </div>

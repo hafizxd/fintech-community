@@ -11,7 +11,7 @@
                             src="{{ isset($user->avatar) ? asset('storage/avatars/'.$user->avatar) : asset('assets/images/avatar-default.png') }}" 
                             alt="User avatar">        
                     </div>
-                    <div>
+                    <div class="">
                         <p class="text-sm">{{ $user->username }}</p>
                         <small class="text-xs text-gray-500">{{ $user->credit }} Credit</small>
                     </div>
