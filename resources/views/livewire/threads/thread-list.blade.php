@@ -36,13 +36,13 @@
                         @foreach($threads as $thread)
                             <div class="my-5 hover:cursor-pointer">
                                 <a href="{{ route('thread.detail', ['thread' => $thread]) }}">
-                                    <x-card class="flex flex-col sm:flex-row sm:justify-between sm:gap-10 p-6">
+                                    <x-card class="{{ auth()->user()->id === $thread->author->id ? 'border-2 border-green-500' : '' }} flex flex-col sm:flex-row sm:justify-between sm:gap-10 p-6">
                                         <div class="sm:hidden flex gap-4 items-center mb-3">
                                             <img 
                                                 class="w-10 h-10 rounded-lg" 
                                                 src="{{ isset($thread->author->avatar) ? asset('storage/avatars/'.$thread->author->avatar) : asset('assets/images/avatar-default.png') }}" 
                                                 alt="User avatar">
-                                            <div class="w-full break-words">
+                                        <div class="w-full break-words">
                                                 <p class="text-xs">{{ $thread->author->username }}</p>
                                                 <small class="text-xs text-gray-500">{{ $thread->author->credit }} Credit</small>
                                             </div>
@@ -55,7 +55,7 @@
                                                 </div>
                                 
                                                 <div class="font-normal text-xs sm:text-sm text-gray-400">
-                                                    <p>{{ strlen($thread->body) > 200 ? substr($thread->body, 0, 200).'...' : $thread->body }}</p>
+                                                    <p>{!! nl2br(e(strlen($thread->body) > 200 ? substr($thread->body, 0, 200).'...' : $thread->body)) !!}</p>
                                                 </div>
                                             </div>
     

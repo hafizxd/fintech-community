@@ -1,4 +1,4 @@
-<div x-data class="flex justify-between">
+<div x-data class="flex justify-between items-center">
     <div class="flex gap-4">
         <x-icon-button wire:click="toggleLike" class="{{ $isLiked ? 'text-green-500' : '' }}">
             <i class="uil uil-thumbs-up"></i>
@@ -23,6 +23,6 @@
     </div>
 
     <div class="text-base text-gray-500 inline align-middle">
-        <small>28 Discussions</small>
+        <small>{{ $discussionsCount }} Discussions</small>
     </div>
 </div>

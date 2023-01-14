@@ -3,8 +3,22 @@
         <div class="grid grid-cols-4 grid-flow-col gap-10">
             <div class="col-span-1">
                 <x-card>
-                    <div class="p-6">
-                        {{ __("You're logged in!") }}
+                    <div class="flex flex-col items-center py-3 px-6">
+                        <small class="text-gray-500">Author</small>
+
+                        <div class="my-4">
+                            <img 
+                                class="w-24 h-24 rounded-full" 
+                                src="{{ isset($thread->author->avatar) ? asset('storage/avatars/'.$thread->author->avatar) : asset('assets/images/avatar-default.png') }}" 
+                                alt="User avatar">        
+                        </div>
+
+                        <div class="w-full flex flex-col items-center">
+                            <p class="text-sm">{{ $thread->author->username }}</p>
+                            <div>
+                                <small class="text-xs text-gray-500">{{ $thread->author->credit }} Credit</small>
+                            </div>
+                        </div>
                     </div>
                 </x-card>
             </div>
@@ -15,7 +29,7 @@
                         <div class="p-6">
                             <div class="flex justify-between mb-3">
                                 <div class="text-sm text-gray-500">
-                                    <small>Posted on 28 Januari 2023 15:57</small>
+                                    <small>Posted on {{ $thread->created_at->format('d F Y H:i') }}</small>
                                 </div>
                                 <x-dropdown align="right" width="48">
                                     <x-slot name="trigger">
@@ -30,11 +44,10 @@
                                         </x-dropdown-link>
                 
                                         <!-- Authentication -->
-                                        <form method="POST" action="{{ route('logout') }}">
+                                        <form wire:submit.prevent="delete" method="POST">
                                             @csrf
                 
-                                            <x-dropdown-link :href="route('logout')"
-                                                    onclick="event.preventDefault();
+                                            <x-dropdown-link @click="event.preventDefault();
                                                                 this.closest('form').submit();">
                                                 {{ __('Delete') }}
                                             </x-dropdown-link>
@@ -44,12 +57,12 @@
                             </div>
                 
                             <div x-show="!openEdit" class="mb-8">
-                                <div class="mb-3 font-bold text-xl">
+                                <div class="sm:mb-3 font-medium text-base sm:text-lg">
                                     <h3>{{ $thread->title }}</h3>
                                 </div>
                     
-                                <div class="font-normal text-sm text-gray-300">
-                                    <p>{{ $thread->body }}</p>
+                                <div class="font-normal text-xs sm:text-sm text-gray-400">
+                                    <p>{!! nl2br(e($thread->body)) !!}</p>
                                 </div>
                             </div>
                 

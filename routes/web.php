@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Courses\CourseList;
+use App\Http\Livewire\Courses\CourseCreate;
 use App\Http\Livewire\Threads\ThreadList;
 use App\Http\Livewire\Threads\ThreadDetail;
 
@@ -26,8 +27,9 @@ Route::group(['prefix' => '/threads', 'as' => 'thread.'], function () {
     Route::get('/details/{thread:slug}', ThreadDetail::class)->name('detail');
 });
 
-Route::prefix('/classes')->group(function () {
-    Route::get('/', CourseList::class)->name('class.index');
+Route::group(['prefix' => '/classes', 'as' => 'class.'], function () {
+    Route::get('/', CourseList::class)->name('index');
+    Route::get('/create', CourseCreate::class)->name('create');
 });
 
 Route::get('/dashboard', function () {

@@ -26,7 +26,12 @@ class ThreadAction extends Component
         $likesCount = $this->thread->likes()->select('id')->count();
         $dislikesCount = $this->thread->dislikes()->select('id')->count();
 
-        return view('livewire.threads.thread-action', compact('likesCount', 'dislikesCount'));
+        $discuss = Thread::where('id', $this->thread->id)
+            ->withCount(['replies', 'nestedReplies'])
+            ->first();
+        $discussionsCount = $discuss->replies_count + $discuss->nested_replies_count;
+
+        return view('livewire.threads.thread-action', compact('likesCount', 'dislikesCount', 'discussionsCount'));
     }
 
     public function toggleLike()
