@@ -24,7 +24,7 @@
         @livewireStyles
     </head>
     <body class="font-poppins antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-slate-900">
+        <div class="flex flex-col min-h-screen bg-gray-100 dark:bg-slate-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -37,9 +37,13 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="grow">
                 {{ $slot }}
             </main>
+
+            <div class="flex justify-center items-center h-24 text-gray-500 text-sm">
+                <p>&copy; 2023 Fincom</p>
+            </div>
         </div>
 
         @livewireScripts

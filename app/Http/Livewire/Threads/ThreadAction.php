@@ -51,7 +51,8 @@ class ThreadAction extends Component
     public function toggleDislike()
     {
         if ($this->isLiked) {
-            $this->manageAuthorCredit();
+            if ($this->thread->author->id !== Auth::user()->id)
+                $this->manageAuthorCredit();
 
             $this->thread->likes()->detach(Auth::user()->id);   
             $this->isLiked = false;

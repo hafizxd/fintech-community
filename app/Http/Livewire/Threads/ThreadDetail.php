@@ -44,7 +44,7 @@ class ThreadDetail extends Component
         $this->dispatchBrowserEvent('card-closed', ['openEdit' => false]);
     }
 
-    public function delete()
+    public function destroy()
     {
         Thread::destroy($this->thread->id);
 

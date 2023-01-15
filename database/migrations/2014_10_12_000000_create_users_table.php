@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->tinyInteger('role')->default(1);
-            $table->integer('creadit')->default(0);
+            $table->integer('credit')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -28,11 +28,11 @@ class ThreadList extends Component
         
         switch($this->order) {
             case 'most-discussed':
-                $threads->withCount('replies')->orderBy('replies_count', 'desc');
+                $threads->orderBy('replies_count', 'desc');
                 break;
             
             case 'most-liked':
-                $threads->withCount('likes')->orderBy('likes_count', 'desc');
+                $threads->orderBy('likes_count', 'desc');
                 break;
 
             case 'newest':

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\Courses\CourseList;
 use App\Http\Livewire\Courses\CourseCreate;
+use App\Http\Livewire\Courses\CourseDetail;
+use App\Http\Livewire\Courses\CourseEdit;
 use App\Http\Livewire\Threads\ThreadList;
 use App\Http\Livewire\Threads\ThreadDetail;
 
@@ -24,17 +26,19 @@ Route::get('/', function () {
 
 Route::group(['prefix' => '/threads', 'as' => 'thread.'], function () {
     Route::get('/', ThreadList::class)->name('index');
-    Route::get('/details/{thread:slug}', ThreadDetail::class)->name('detail');
+    Route::get('/{thread:slug}', ThreadDetail::class)->name('detail');
 });
 
 Route::group(['prefix' => '/classes', 'as' => 'class.'], function () {
     Route::get('/', CourseList::class)->name('index');
     Route::get('/create', CourseCreate::class)->name('create');
+    Route::get('/{course:slug}', CourseDetail::class)->name('detail');
+    Route::get('/{course:slug}/edit', CourseEdit::class)->name('edit');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {
+    return view('landing-page');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

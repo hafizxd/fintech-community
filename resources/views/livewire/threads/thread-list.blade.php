@@ -42,7 +42,7 @@
                                                 class="w-10 h-10 rounded-lg" 
                                                 src="{{ isset($thread->author->avatar) ? asset('storage/avatars/'.$thread->author->avatar) : asset('assets/images/avatar-default.png') }}" 
                                                 alt="User avatar">
-                                        <div class="w-full break-words">
+                                            <div class="w-full break-words">
                                                 <p class="text-xs">{{ $thread->author->username }}</p>
                                                 <small class="text-xs text-gray-500">{{ $thread->author->credit }} Credit</small>
                                             </div>

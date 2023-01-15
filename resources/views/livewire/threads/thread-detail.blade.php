@@ -1,7 +1,7 @@
 <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="grid grid-cols-4 grid-flow-col gap-10">
-            <div class="col-span-1">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 md:grid-flow-col md:gap-10">
+            <div class="hidden md:block col-span-1">
                 <x-card>
                     <div class="flex flex-col items-center py-3 px-6">
                         <small class="text-gray-500">Author</small>
@@ -44,14 +44,9 @@
                                         </x-dropdown-link>
                 
                                         <!-- Authentication -->
-                                        <form wire:submit.prevent="delete" method="POST">
-                                            @csrf
-                
-                                            <x-dropdown-link @click="event.preventDefault();
-                                                                this.closest('form').submit();">
-                                                {{ __('Delete') }}
-                                            </x-dropdown-link>
-                                        </form>
+                                        <x-dropdown-link wire:click="destroy">
+                                            {{ __('Delete') }}
+                                        </x-dropdown-link>
                                     </x-slot>
                                 </x-dropdown>
                             </div>
@@ -98,6 +93,28 @@
                 </div>         
                 
                 @livewire('threads.replies.reply-list', ['threadId' => $thread->id])
+            </div>
+
+            <div class="sm:hidden col-span-1">
+                <x-card>
+                    <div class="flex flex-col items-center py-3 px-6">
+                        <small class="text-gray-500">Author</small>
+
+                        <div class="my-4">
+                            <img 
+                                class="w-24 h-24 rounded-full" 
+                                src="{{ isset($thread->author->avatar) ? asset('storage/avatars/'.$thread->author->avatar) : asset('assets/images/avatar-default.png') }}" 
+                                alt="User avatar">        
+                        </div>
+
+                        <div class="w-full flex flex-col items-center">
+                            <p class="text-sm">{{ $thread->author->username }}</p>
+                            <div>
+                                <small class="text-xs text-gray-500">{{ $thread->author->credit }} Credit</small>
+                            </div>
+                        </div>
+                    </div>
+                </x-card>
             </div>
         </div>
     </div>

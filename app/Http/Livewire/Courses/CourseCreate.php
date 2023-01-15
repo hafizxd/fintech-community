@@ -18,12 +18,12 @@ class CourseCreate extends Component
 
     protected $rules = [
         'course.title' => 'required',
-        'course.thumbnail' => 'required|image|max:1024',
+        'course.thumbnail' => 'required|image|max:5024',
         'course.price' => 'required|numeric|min:1',
         'courseItems.0.title' => 'required',
-        'courseItems.0.video' => 'required|mimetypes:video/x-ms-asf,video/x-matroska,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:302400',
+        'courseItems.0.video' => 'required|mimetypes:video/x-ms-asf,video/x-matroska,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
         'courseItems.*.title' => 'required',
-        'courseItems.*.video' => 'required|mimetypes:video/x-ms-asf,video/x-matroska,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:302400',
+        'courseItems.*.video' => 'required|mimetypes:video/x-ms-asf,video/x-matroska,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
     ];
 
     public function mount() 
