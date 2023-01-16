@@ -56,7 +56,7 @@
                 </x-card>
               </div>
 
-              <div class="flex flex-row justify-between relative top-[-500px] sm:top-[-500px] md:top-[-450px] z-0 max-h-96 lg:max-h-[27rem] mb-[-500px] sm:mb-[-500px] md:mb-[-450px]">
+              <div class="flex flex-row justify-between relative top-[-500px] sm:top-[-500px] md:top-[-450px] z-0 max-h-96 lg:max-h-[27rem] mb-[-350px] sm:mb-[-400px] md:mb-[-500px]">
                 <div>
                   <img class="h-full" src="{{ asset('assets/images/landing-left.png') }}">
                 </div>
