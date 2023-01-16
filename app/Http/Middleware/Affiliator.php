@@ -16,7 +16,7 @@ class Affiliator
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->user()->role !== 2) {
+        if ($request->user()->role != 2) {
             return redirect()->route('dashboard');
         }
         return $next($request);
