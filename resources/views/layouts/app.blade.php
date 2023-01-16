@@ -7,6 +7,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link rel="icon" href="{{ url('logo.png') }}" type = "image/x-icon">
+
         <style>
             [x-cloak] {
                 display: none !important;
