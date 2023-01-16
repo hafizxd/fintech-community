@@ -17,7 +17,7 @@ class CourseCreate extends Component
     public $courseItems;
 
     protected $rules = [
-        'course.title' => 'required',
+        'course.title' => 'required|unique:courses,title',
         'course.thumbnail' => 'required|image|max:5024',
         'course.price' => 'required|numeric|min:1',
         'courseItems.0.title' => 'required',

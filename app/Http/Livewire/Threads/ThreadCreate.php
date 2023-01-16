@@ -17,7 +17,7 @@ class ThreadCreate extends Component
     public function store()
     {
         $this->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|unique:threads',
             'body' => 'required'
         ]);
 
