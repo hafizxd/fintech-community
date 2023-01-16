@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function dislikedThreads() {
         return $this->morphedByMany(Thread::class, 'dislikeable');
     }
+
+    public function courses() {
+        return $this->belongsToMany(Course::class, 'buyers');
+    }
 }

@@ -21,26 +21,22 @@ use App\Http\Livewire\Threads\ThreadDetail;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::group(['prefix' => '/threads', 'as' => 'thread.'], function () {
-    Route::get('/', ThreadList::class)->name('index');
-    Route::get('/{thread:slug}', ThreadDetail::class)->name('detail');
-});
-
-Route::group(['prefix' => '/classes', 'as' => 'class.'], function () {
-    Route::get('/', CourseList::class)->name('index');
-    Route::get('/create', CourseCreate::class)->name('create');
-    Route::get('/{course:slug}', CourseDetail::class)->name('detail');
-    Route::get('/{course:slug}/edit', CourseEdit::class)->name('edit');
-});
-
-Route::get('/', function () {
     return view('landing-page');
 })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::group(['prefix' => '/threads', 'as' => 'thread.'], function () {
+        Route::get('/', ThreadList::class)->name('index');
+        Route::get('/{thread:slug}', ThreadDetail::class)->name('detail');
+    });
+    
+    Route::group(['prefix' => '/classes', 'as' => 'class.'], function () {
+        Route::get('/', CourseList::class)->name('index');
+        Route::get('/create', CourseCreate::class)->name('create')->middleware('affiliator');
+        Route::get('/{course:slug}', CourseDetail::class)->name('detail');
+        Route::get('/{course:slug}/edit', CourseEdit::class)->name('edit')->middleware('affiliator');
+    });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

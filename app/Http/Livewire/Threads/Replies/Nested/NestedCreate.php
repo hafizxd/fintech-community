@@ -11,6 +11,8 @@ class NestedCreate extends Component
     public $replyId;
     public $body;
 
+    protected $listeners = ['nested-assign-username' => 'assignUsername'];
+
     public function mount($replyId)
     {
         $this->replyId = $replyId;
@@ -19,6 +21,11 @@ class NestedCreate extends Component
     public function render()
     {
         return view('livewire.threads.replies.nested.nested-create');
+    }
+
+    public function assignUsername($str) 
+    {
+        $this->body = '@'.$str.' ';
     }
 
     public function store()

@@ -29,39 +29,43 @@
                                 {!! nl2br(e(substr($course->description, 0, 300))) !!}... 
                                 <span class="text-indigo-400 hover:cursor-pointer" @click="expanded=true"> See more</span>
                             </span>
+                        @else
+                            <span> {!! nl2br(e($course->description)) !!} </span>
                         @endif
                     </p>
                 </div>
                 
-                <div class="my-10">
-                    <h1 class="text-white text-xl sm:text-2xl font-medium mb-3">Videos</h1>
-                    <div class=" mx-auto rounded-xl border-2 border-gray-700 text-white" x-data="{selected:-1}">
-                        <ul class="shadow-box">                  
-                            @php $counter = 1; @endphp   
-                            @foreach($course->courseItems as $key => $item) 
-                                <li class="relative ">
-                                    <button type="button" class="w-full px-8 py-6 text-left" @click="selected !== {{ $key }} ? selected = {{ $key }} : selected = null">
-                                        <div class="flex items-center justify-between">
-                                            <h1 class="text-xl font-bold"><span class="mr-2">{{ $counter }}.</span> {{ $item->title }}</h1>
-                                            <i class="uil uil-angle-down text-xl"></i>
+                @if($hasBroughtCourse)
+                    <div class="my-10">
+                        <h1 class="text-white text-xl sm:text-2xl font-medium mb-3">Videos</h1>
+                        <div class=" mx-auto rounded-xl border-2 border-gray-700 text-white" x-data="{selected:-1}">
+                            <ul class="shadow-box">                  
+                                @php $counter = 1; @endphp   
+                                @foreach($course->courseItems as $key => $item) 
+                                    <li class="relative ">
+                                        <button type="button" class="w-full px-8 py-6 text-left" @click="selected !== {{ $key }} ? selected = {{ $key }} : selected = null">
+                                            <div class="flex items-center justify-between">
+                                                <h1 class="text-xl font-bold"><span class="mr-2">{{ $counter }}.</span> {{ $item->title }}</h1>
+                                                <i class="uil uil-angle-down text-xl"></i>
+                                            </div>
+                                        </button>
+                            
+                                        <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == {{ $key }} ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                                            <div class="p-6">
+                                                <video controls class="w-full h-full">
+                                                    <source src="{{ asset('storage/courses/videos/'.$item->video) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video> 
+                                            </div>
                                         </div>
-                                    </button>
-                        
-                                    <div class="relative overflow-hidden transition-all max-h-0 duration-700" style="" x-ref="container1" x-bind:style="selected == {{ $key }} ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
-                                        <div class="p-6">
-                                            <video controls class="w-full h-full">
-                                                <source src="{{ asset('storage/courses/videos/'.$item->video) }}" type="video/mp4">
-                                                Your browser does not support the video tag.
-                                            </video> 
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
 
-                                @php $counter++; @endphp
-                            @endforeach
-                        </ul>
+                                    @php $counter++; @endphp
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
 
             <div class="col-span-1">
@@ -95,8 +99,10 @@
                         <a href="{{ route('class.edit', ['course' => $course]) }}" id="linkEdit" class="hidden"></a>
 
                         <x-danger-button wire:click="destroy" class="mb-3 mt-2 py-3 w-full border-2 rounded-md">Delete Class</x-danger-button>
+                    @elseif ($hasBroughtCourse)
+                        <h1 class="mt-5 text-white font-medium text-xl text-center">Congratulations, you have bought this class.</h1>
                     @else
-                        <x-primary-button class="my-3 py-3 w-full rounded-md">
+                        <x-primary-button wire:click="buy" class="my-3 py-3 w-full rounded-md">
                             Buy
                         </x-primary-button>
                     @endif

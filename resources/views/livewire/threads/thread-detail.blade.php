@@ -31,24 +31,26 @@
                                 <div class="text-sm text-gray-500">
                                     <small>Posted on {{ $thread->created_at->format('d F Y H:i') }}</small>
                                 </div>
-                                <x-dropdown align="right" width="48">
-                                    <x-slot name="trigger">
-                                        <x-icon-button>
-                                            <i class="uil uil-ellipsis-v"></i>
-                                        </x-icon-button>
-                                    </x-slot>
-                
-                                    <x-slot name="content">
-                                        <x-dropdown-link @click="openEdit = true">
-                                            {{ __('Edit') }}
-                                        </x-dropdown-link>
-                
-                                        <!-- Authentication -->
-                                        <x-dropdown-link wire:click="destroy">
-                                            {{ __('Delete') }}
-                                        </x-dropdown-link>
-                                    </x-slot>
-                                </x-dropdown>
+                                @if ($thread->author->id == auth()->user()->id)
+                                    <x-dropdown align="right" width="48">
+                                        <x-slot name="trigger">
+                                            <x-icon-button>
+                                                <i class="uil uil-ellipsis-v"></i>
+                                            </x-icon-button>
+                                        </x-slot>
+                    
+                                        <x-slot name="content">
+                                            <x-dropdown-link @click="openEdit = true">
+                                                {{ __('Edit') }}
+                                            </x-dropdown-link>
+                    
+                                            <!-- Authentication -->
+                                            <x-dropdown-link wire:click="destroy">
+                                                {{ __('Delete') }}
+                                            </x-dropdown-link>
+                                        </x-slot>
+                                    </x-dropdown>
+                                @endif
                             </div>
                 
                             <div x-show="!openEdit" class="mb-8">

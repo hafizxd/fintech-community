@@ -11,6 +11,7 @@
         </x-icon-button>
 
         <x-icon-button 
+            wire:click="$emit('nested-assign-username', '{{ $nested->author->username }}')"
             @click="$dispatch('card-nested-toggle', {
                 'open': true, 
                 'replyId': {{ $nested->reply->id }}
