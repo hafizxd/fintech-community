@@ -55,7 +55,7 @@
                                                 </div>
                                 
                                                 <div class="font-normal text-xs sm:text-sm text-gray-400">
-                                                    <p>{!! nl2br(e(strlen($thread->body) > 200 ? substr($thread->body, 0, 200).'...' : $thread->body)) !!}</p>
+                                                    <p class="break-words">{!! nl2br(e(strlen($thread->body) > 200 ? substr($thread->body, 0, 200).'...' : $thread->body)) !!}</p>
                                                 </div>
                                             </div>
     
@@ -67,7 +67,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="hidden sm:flex flex-col gap-4 items-center w-28 pr-3">
+                                        <div class="hidden sm:flex flex-col gap-4 items-center min-w-[20%] lg:min-w-[10%] pr-3">
                                             <img 
                                                 class="w-16 h-16 rounded-xl" 
                                                 src="{{ isset($thread->author->avatar) ? asset('storage/avatars/'.$thread->author->avatar) : asset('assets/images/avatar-default.png') }}" 

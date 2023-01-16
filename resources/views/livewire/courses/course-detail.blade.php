@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 grid-flow-row md:grid-flow-col md:gap-10">
             <div class="col-span-3">
-                <div class="rounded-t-xl overflow-hidden max-h-96">
+                <div class="rounded-t-xl overflow-hidden max-h-96 w-full">
                     <img src="{{ asset('storage/courses/thumbnails/'.$course->thumbnail) }}" alt="">
                 </div>
 
