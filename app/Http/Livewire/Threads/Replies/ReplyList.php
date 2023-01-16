@@ -18,8 +18,13 @@ class ReplyList extends Component
 
     public function render()
     {
+        $replies = Reply::whereRelation('thread', 'id', $this->threadId)
+            ->withCount(['likes'])
+            ->orderBy('likes_count', 'desc')
+            ->get();
+
         return view('livewire.threads.replies.reply-list', [
-            'replies' => Reply::whereRelation('thread', 'id', $this->threadId)->orderBy('created_at', 'asc')->get()
+            'replies' => $replies
         ]);
     }
 }

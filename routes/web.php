@@ -9,6 +9,8 @@ use App\Http\Livewire\Courses\CourseEdit;
 use App\Http\Livewire\Threads\ThreadList;
 use App\Http\Livewire\Threads\ThreadDetail;
 
+use App\Http\Livewire\Admin\Users\UserList;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +42,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+
+    // Admin
+    Route::group(['prefix' => '/admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+        Route::get('/', UserList::class)->name('user');
+    });
 });
 
 require __DIR__.'/auth.php';

@@ -14,6 +14,8 @@ class ThreadDetail extends Component
 
     public Thread $thread;
 
+    protected $listeners = ['credit-changed' => '$refresh'];
+
     public function mount(Thread $thread)
     {
         $this->thread = $thread;

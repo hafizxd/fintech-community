@@ -41,6 +41,8 @@ class ReplyAction extends Component
 
         $this->reply->likes()->toggle(Auth::user()->id);
         $this->isLiked = !$this->isLiked;
+
+        $this->emit('credit-changed');
     }
 
     public function toggleDislike()
@@ -54,6 +56,8 @@ class ReplyAction extends Component
 
         $this->reply->dislikes()->toggle(Auth::user()->id);
         $this->isDisliked = !$this->isDisliked;
+
+        $this->emit('credit-changed');
     }
 
     protected function manageAuthorCredit()

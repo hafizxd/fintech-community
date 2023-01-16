@@ -13,6 +13,8 @@ class ThreadAction extends Component
 
     public Thread $thread;
 
+    protected $listeners = ['reply-added' => '$refresh'];
+
     public function mount(Thread $thread)
     {
         $this->thread = $thread;
@@ -46,6 +48,8 @@ class ThreadAction extends Component
 
         $this->thread->likes()->toggle(Auth::user()->id);
         $this->isLiked = !$this->isLiked;
+
+        $this->emit('credit-changed');
     }
 
     public function toggleDislike()
@@ -60,6 +64,8 @@ class ThreadAction extends Component
 
         $this->thread->dislikes()->toggle(Auth::user()->id);
         $this->isDisliked = !$this->isDisliked;
+
+        $this->emit('credit-changed');
     }
 
     protected function manageAuthorCredit()

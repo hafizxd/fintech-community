@@ -93,8 +93,11 @@ class CourseCreate extends Component
             $file = $getID3->analyze(storage_path('app/public/courses/videos/'.$videoName));
             $totalDuration += $file['playtime_seconds'];
         }
+        
+        $dt = new \DateTime('now', new \DateTimeZone('UTC')); 
+        $dt->setTimestamp($totalDuration);
+        $duration = $dt->format('H:i:s');
 
-        $duration = date('H:i:s', $totalDuration);
         $course->update([ 'duration' => $duration ]);
 
         return redirect()->route('class.index');

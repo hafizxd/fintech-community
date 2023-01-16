@@ -21,7 +21,7 @@
                         <div>
                             <div class="mb-3">
                                 <div class="font-normal text-xs sm:text-sm text-gray-300">
-                                    <p>{{ $reply->body }}</p>
+                                    <p>{!! nl2br(e($reply->body)) !!}</p>
                                 </div>
                             </div>
         

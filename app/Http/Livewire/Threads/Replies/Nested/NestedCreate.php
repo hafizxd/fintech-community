@@ -11,7 +11,10 @@ class NestedCreate extends Component
     public $replyId;
     public $body;
 
-    protected $listeners = ['nested-assign-username' => 'assignUsername'];
+    protected $listeners = [
+        'nested-assign-username' => 'assignUsername', 
+        'reset-assign-username' => 'resetBody'
+    ];
 
     public function mount($replyId)
     {
@@ -28,6 +31,11 @@ class NestedCreate extends Component
         $this->body = '@'.$str.' ';
     }
 
+    public function resetBody() 
+    {
+        $this->body = '';
+    }
+
     public function store()
     {
         $this->validate(['body' => 'required']);
@@ -39,6 +47,7 @@ class NestedCreate extends Component
         ]);
 
         $this->emit('nested-added');
+        $this->emit('reply-added');
 
         $this->reset('body');
 

@@ -41,6 +41,8 @@ class NestedAction extends Component
 
         $this->nested->likes()->toggle(Auth::user()->id);
         $this->isLiked = !$this->isLiked;
+        
+        $this->emit('credit-changed');
     }
 
     public function toggleDislike()
@@ -54,6 +56,8 @@ class NestedAction extends Component
 
         $this->nested->dislikes()->toggle(Auth::user()->id);
         $this->isDisliked = !$this->isDisliked;
+        
+        $this->emit('credit-changed');
     }
 
     protected function manageAuthorCredit()

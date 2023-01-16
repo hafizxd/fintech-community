@@ -10,7 +10,9 @@
             <div class="text-xs sm:text-sm text-gray-500">{{ $dislikesCount }}</div>
         </x-icon-button>
 
-        <x-icon-button @click="$dispatch('card-nested-toggle', {'open': true, 'replyId': {{ $reply->id }}})">
+        <x-icon-button 
+            wire:click="$emit('reset-assign-username')"
+            @click="$dispatch('card-nested-toggle', {'open': true, 'replyId': {{ $reply->id }}})">
             <i class="uil uil-comment text-base sm:text-lg"></i>
             <div class="text-xs sm:text-sm text-gray-500">Reply</div>
         </x-icon-button>

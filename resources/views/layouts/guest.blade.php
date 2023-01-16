@@ -12,6 +12,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @livewireStyles
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen px-6 sm:px-0 flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
@@ -20,11 +22,17 @@
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
                     <img class="w-auto h-20" src="{{ url('logo.png') }}" alt="">
                 </a>
+
+                @if (request()->routeIs('admin.*'))
+                    <h3 class="mt-6 text-white text-xl font-semibold">Admin</h3>
+                @endif
             </div>
 
             <div class="w-full mx-6 sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden rounded-xl">
                 {{ $slot }}
             </div>
         </div>
+        
+        @livewireScripts
     </body>
 </html>

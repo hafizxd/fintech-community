@@ -13,14 +13,14 @@ class CourseList extends Component
     public function render()
     {
         $courses = Course::with(['author'])
-            ->withCount(['courseItems']);
+            ->withCount(['courseItems', 'users']);
 
         if (isset($this->search))
             $courses->where('title', 'LIKE', '%'.$this->search.'%');
 
         switch($this->order) {
             case 'best-seller':
-                $courses->orderBy('course_items_count', 'desc');
+                $courses->orderBy('users_count', 'desc');
                 break;
 
             case 'newest':

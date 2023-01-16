@@ -20,4 +20,8 @@ class Course extends Model
     public function courseItems() {
         return $this->hasMany(CourseItem::class);
     }
+
+    public function users() {
+        return $this->belongsToMany(User::class, 'buyers');
+    }
 }

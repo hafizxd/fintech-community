@@ -35,7 +35,7 @@
                     </p>
                 </div>
                 
-                @if($hasBroughtCourse)
+                @if($course->author->id == auth()->user()->id || $hasBroughtCourse)
                     <div class="my-10">
                         <h1 class="text-white text-xl sm:text-2xl font-medium mb-3">Videos</h1>
                         <div class=" mx-auto rounded-xl border-2 border-gray-700 text-white" x-data="{selected:-1}">

@@ -14,7 +14,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <div class="font-normal text-sm text-gray-300 mb-2">
+                        <div class="font-normal text-xs sm:text-sm text-gray-300 mb-2">
                             <p>{{ $nest->body }}</p>
                         </div>
 

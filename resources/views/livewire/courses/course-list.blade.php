@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         @if (auth()->user()->role == 2)
             <div class="flex gap-7 items-center mb-10">
-                <h1 class="text-2xl font-semibold text-white">Hello {{ auth()->user()->username }}, You are affiliator !</h1>
+                <h1 class="text-2xl font-semibold text-white">Hello mentor {{ auth()->user()->username }} !</h1>
 
                 <div class="">
                     <x-primary-button type="button" onclick="document.querySelector('#linkCreate').click()" class="w-full rounded-full py-3">
@@ -43,6 +43,7 @@
                                 <div class="flex flex-col text-gray-500 text-sm">
                                     <small><i class="text-base uil uil-video"></i> {{ $course->course_items_count }} videos</small>
                                     <small><i class="text-base uil uil-clock"></i> {{ date('G\h i\m', strtotime($course->duration)) }} duration</small>
+                                    <small><i class="text-base uil uil-clock"></i> {{ date('G\h i\m', strtotime($course->duration)) }} user</small>
                                 </div>
 
                                 <h4 class="text-lg font-medium text-green-500 text-right"><span class="text-sm">Rp</span> {{ number_format($course->price, 2, ',', '.') }}</h4>
