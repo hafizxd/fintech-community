@@ -1,8 +1,10 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         @if (auth()->user()->role == 2)
-            <div class="flex gap-7 items-center mb-10">
-                <h1 class="text-2xl font-semibold text-white">Hello mentor {{ auth()->user()->username }} !</h1>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-7 items-center mb-10">
+                <div>
+                    <h1 class="text-2xl font-semibold text-white text-center">Hello mentor {{ auth()->user()->username }} !</h1>
+                </div>
 
                 <div class="">
                     <x-primary-button type="button" onclick="document.querySelector('#linkCreate').click()" class="w-full rounded-full py-3">
@@ -26,7 +28,7 @@
         {{-- Card List --}}
         <div class="my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             @foreach($courses as $key => $course) 
-                <a href="{{ route('class.detail', ['course' => $course]) }}" class="h-full max-w-sm">
+                <a href="{{ route('class.detail', ['course' => $course]) }}" class="h-full">
                     <div wire:key="{{ $key }}" class="flex mx-auto flex-col justify-between h-full w-full shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 hover:dark:bg-slate-700 transition duration-300 ease-in-out">
                         <div class="h-52 overflow-hidden">
                             <img class="rounded-t-xl w-full h-auto" src="{{ asset('storage/courses/thumbnails/'.$course->thumbnail) }}" alt="" />
