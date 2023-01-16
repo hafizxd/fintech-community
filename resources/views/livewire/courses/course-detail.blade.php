@@ -2,8 +2,8 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 grid-flow-row md:grid-flow-col md:gap-10">
             <div class="col-span-3">
-                <div class="rounded-t-xl overflow-hidden max-h-96 w-full">
-                    <img src="{{ asset('storage/courses/thumbnails/'.$course->thumbnail) }}" alt="">
+                <div class="rounded-t-xl overflow-hidden max-h-96">
+                    <img src="{{ asset('storage/courses/thumbnails/'.$course->thumbnail) }}" alt="" class="w-full">
                 </div>
 
                 <h1 class="my-5 text-3xl md:text-4xl lg:text-5xl text-white font-bold">{{ $course->title }}</h1>
