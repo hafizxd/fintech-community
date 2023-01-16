@@ -39,17 +39,17 @@
 
                   <h1 class="text-white text-2xl sm:text-3xl font-semibold">Forum</h1>
 
-                  <p class="text-gray-400 text-sm sm:text-base">A platform that aims to establish a comprehensive collection of questions and answers related to finance where people can find and share solutions</p>
+                  <p class="text-gray-400 text-sm sm:text-base">A platform that aims to establish a comprehensive collection of questions and answers related to finance where people can find and share solutions.</p>
                 </x-card>
 
-                <x-card class="flex flex-col justify-center text-center p-8 gap-7 shadow-lg h-full">
+                <x-card class="flex flex-col text-center p-8 gap-7 shadow-lg h-full">
                   <div class="h-40 flex justify-center">
                     <img class="h-full w-auto" src="{{ asset('assets/images/landing-class.png') }}">
                   </div>
 
                   <h1 class="text-white text-2xl sm:text-3xl font-semibold">Class</h1>
 
-                  <p class="text-gray-400 text-sm sm:text-base">A platform that offers various classes taught by experienced professionals  world to enhance and improve your financial skillsets</p>
+                  <p class="text-gray-400 text-sm sm:text-base">A platform that offers various classes taught by experienced professionals to enhance your financial skills.</p>
                 </x-card>
               </div>
 
