@@ -45,10 +45,12 @@
                                 <div class="flex flex-col text-gray-500 text-sm">
                                     <small><i class="text-base uil uil-video"></i> {{ $course->course_items_count }} videos</small>
                                     <small><i class="text-base uil uil-clock"></i> {{ date('G\h i\m', strtotime($course->duration)) }} duration</small>
-                                    <small><i class="text-base uil uil-clock"></i> {{ date('G\h i\m', strtotime($course->duration)) }} user</small>
                                 </div>
 
-                                <h4 class="text-lg font-medium text-green-500 text-right"><span class="text-sm">Rp</span> {{ number_format($course->price, 2, ',', '.') }}</h4>
+                                <div class="flex flex-col items-end text-sm">
+                                    <small class="text-gray-500">{{ $course->users_count }} user(s) <i class="text-base uil uil-users-alt"></i></small>
+                                    <h4 class="text-lg font-medium text-green-500 text-right"><span class="text-sm">Rp</span> {{ number_format($course->price, 2, ',', '.') }}</h4>
+                                </div>
                                 
                                 {{-- <x-primary-button class="w-full rounded-md dark:bg-transparent dark:border-green-500 dark:text-emerald-500 hover:dark:text-white py-3">Start Course</x-primary-button> --}}
                             </div>

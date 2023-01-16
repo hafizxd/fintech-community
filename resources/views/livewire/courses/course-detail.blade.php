@@ -10,7 +10,7 @@
 
                 <div class="flex flex-col sm:flex-row sm:justify-between my-5 text-gray-500 text-base">
                     <div class="flex gap-4">
-                        <small><i class="text-base uil uil-video"></i> {{ $course->course_items_count }} videos</small>
+                        <small><i class="text-base uil uil-video"></i> {{ $videoCount }} videos</small>
                         <small><i class="text-base uil uil-clock"></i> {{ date('G\h i\m', strtotime($course->duration)) }} duration</small>
                     </div>
                     <small>Created on {{ $course->created_at->format('d F Y') }}</small>
@@ -90,10 +90,13 @@
                 </x-card>
 
                 <div class="my-8">
-                    <h4 class="text-lg font-medium text-green-500 text-center"><span class="text-sm">Rp</span> {{ number_format($course->price, 2, ',', '.') }}</h4>
+                    <div class="flex justify-between items-end">
+                        <small class="text-gray-500"><i class="text-base uil uil-users-alt"></i> {{ $buyerCount }} user(s)</small>
+                        <h4 class="text-lg font-medium text-green-500 text-center"><span class="text-sm">Rp</span> {{ number_format($course->price, 2, ',', '.') }}</h4>
+                    </div>
 
                     @if ($course->author->id == auth()->user()->id)
-                        <x-primary-button type="button" onclick="document.querySelector('#linkEdit').click()" class="mt-3 py-3 w-full dark:bg-transparent dark:border-green-500 border-2 rounded-md">
+                        <x-primary-button type="button" onclick="document.querySelector('#linkEdit').click()" class="mt-3 py-3 w-full border-2 rounded-md">
                             Edit Class
                         </x-primary-button>
                         <a href="{{ route('class.edit', ['course' => $course]) }}" id="linkEdit" class="hidden"></a>

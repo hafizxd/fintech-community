@@ -18,7 +18,7 @@ class CourseDetail extends Component
     public function mount(Course $course)
     {
         $this->course = Course::where('id', $course->id)
-            ->withCount(['courseItems'])
+            ->withCount(['courseItems', 'users'])
             ->with('courseItems')
             ->first();
 
@@ -31,7 +31,14 @@ class CourseDetail extends Component
 
     public function render()
     {
-        return view('livewire.courses.course-detail');
+        $course = Course::where('id', $this->course->id)
+            ->withCount(['courseItems', 'users'])
+            ->first('id');
+
+        $videoCount = $course->course_items_count;
+        $buyerCount = $course->users_count;
+
+        return view('livewire.courses.course-detail', compact('videoCount', 'buyerCount'));
     }
 
     public function buy()

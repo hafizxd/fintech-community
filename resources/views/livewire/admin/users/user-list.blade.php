@@ -45,7 +45,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         @if ($user->role == 1)
-                                            <x-primary-button wire:click="upgradeUser({{ $user->id }})" class="dark:bg-transparent dark:border-green-500 border-2 rounded-md">Upgrade to Mentor</x-primary-button>
+                                            <x-primary-button wire:click="upgradeUser({{ $user->id }})" class="bg-white  border-2 rounded-md">Upgrade to Mentor</x-primary-button>
                                         @else 
                                             -
                                         @endif
