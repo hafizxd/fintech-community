@@ -12,7 +12,7 @@
                         </h1>
                         <p class="mx-auto text-base text-gray-400 sm:max-w-md lg:text-xl md:max-w-3xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias quia consectetur ad quaerat doloribus aliquid?</p>
                         <div class="relative flex flex-col sm:flex-row sm:space-x-4">
-                          <a href="#_" class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-600 rounded-xl sm:mb-0 hover:bg-green-700 sm:w-auto">
+                          <a href="{{ route('thread.index') }}" class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-green-600 rounded-xl sm:mb-0 hover:bg-green-700 sm:w-auto">
                             Join Us
                           </a>
                           {{-- <a href="#_" class="flex items-center px-6 py-3 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-gray-600">
