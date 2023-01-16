@@ -10,6 +10,7 @@ class TopUser extends Component
     public function render()
     {
         $users = User::select('username', 'avatar', 'credit')
+            ->where('role', '!=', 3)
             ->orderBy('credit', 'desc')
             ->limit(5)
             ->get();
