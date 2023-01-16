@@ -114,6 +114,13 @@
                         </x-responsive-nav-link>
                     </form>
                 </div>
+            @else 
+                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                    Log In
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                    Register
+                </x-responsive-nav-link>
             @endif
         </div>
     </div>
